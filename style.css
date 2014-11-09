@@ -1,0 +1,71 @@
+body {
+    background-image: url("image\\background.jpg");
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    color: red;
+}
+
+img {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+}
+
+    img.modify0 {
+        left: 130px;
+        top: 430px;
+    }
+
+    img.modify1 {
+        left: 100px;
+        top: 80px;
+    }
+
+    img.modify2 {
+        left: 260px;
+        top: 150px;
+    }
+
+    img.modify3 {
+        left: 70px;
+        top: 280px;
+    }
+
+    img.modify4 {
+        left: 300px;
+        top: 300px;
+    }
+
+    img.modify5 {
+        left: 450px;
+        top: 400px;
+    }
+
+    img.modify6 {
+        left: 550px;
+        top: 200px;
+    }
+
+    img.modify7 {
+        left: 700px;
+        top: 250px;
+    }
+
+    img.modify8 {
+        left: 720px;
+        top: 80px;
+    }
+
+    img.modify9 {
+        left: 400px;
+        top: 70px;
+    }
+
+div {
+    position: absolute;
+    left: 660px;
+    top: 500px;
+    font-size: 40px;
+    font-family: Lucida Console;
+    color: red;
+}
