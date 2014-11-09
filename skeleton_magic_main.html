@@ -1,0 +1,70 @@
+<html>
+
+<head>
+	<title> Skeleton Magic </title>
+</head>
+
+<style type="text/css">
+	@import url("style_skeleton_magic_main.css");
+</style>
+
+<script language="javascript">
+	
+	var totalCard = 10;
+	var flag = new Array();
+		
+	function initialization(){
+		for(var I=0; I<52; I++)
+			flag[I] = false;
+		showNewCards(false);
+	}
+	
+	function show(){
+		var path = "image\\DancingSkeleton.gif";
+		for(var I=0; I<totalCard; I++){
+			var id = "card"+I;
+			document.getElementById(id).src = path;		
+		}
+		document.getElementById("msg0").value = "Wait..."
+		document.getElementById("msg1").value = "It's coming..."
+		setTimeout("showNewCards(true)", 5000);
+	}
+	
+	function showNewCards(showMsg){
+		if( showMsg==true ){
+			document.getElementById("msg0").value = "Your choosen card"
+			document.getElementById("msg1").value = "does not EXIST here"
+		}
+		for(var I=0; I<totalCard; ){
+			var no = Math.floor(Math.random()*52);
+			if( flag[no]==false ){
+				flag[no] = true;
+				var id = "card"+I;
+				var path = "image\\cards\\"+no+".png";
+				document.getElementById(id).src = path;
+				I++;
+			}
+		}
+	}
+	
+</script>
+
+<body onload="initialization()" onkeypress="show()">	
+	<img class="modify0" src="image\\DancingSkeleton.gif" alt="card" id="card0"/>
+	<img class="modify1" src="image\\DancingSkeleton.gif" alt="card" id="card1" />
+	<img class="modify2" src="image\\DancingSkeleton.gif" alt="card" id="card2" />
+	<img class="modify3" src="image\\DancingSkeleton.gif" alt="card" id="card3" />
+	<img class="modify4" src="image\\DancingSkeleton.gif" alt="card" id="card4" />
+	<img class="modify5" src="image\\DancingSkeleton.gif" alt="card" id="card5"/>
+	<img class="modify6" src="image\\DancingSkeleton.gif" alt="card" id="card6"/>
+	<img class="modify7" src="image\\DancingSkeleton.gif" alt="card" id="card7"/>
+	<img class="modify8" src="image\\DancingSkeleton.gif" alt="card" id="card8"/>
+	<img class="modify9" src="image\\DancingSkeleton.gif" alt="card" id="card9"/>
+	<form>
+		<input size="20" type="text" value="ChOoSE a CarD" id="msg0" />
+		</br>
+		<input size="20" type="text" value="press any key..." id="msg1" />		
+	</form>
+</body>
+
+</html>
