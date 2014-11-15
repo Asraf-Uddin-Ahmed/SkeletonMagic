@@ -22,22 +22,31 @@ function showNewCards() {
 }
 
 
-function showMessage(firstMessage, secondMessage) {
-    $("#msg0, #msg1").html("");
-    $('#msg0').html(firstMessage);
-    $('#msg1').html(secondMessage);
+function showMessage(instructionMessage, progressMessage) {
+    $('#instructionDiv').typeText("write", {
+        message: instructionMessage,
+        newLine: true,
+        afterTextType: function () {
+            $('#progressSpan').typeText("toggle", {
+                toggleMessageArray: [progressMessage],
+                typeSpeed: 300,
+                backspaceSpeed: 300,
+                toggleLoop: true
+            });
+        }
+    });
 }
 
 function initialization() {
     for (var I = 0; I < 52; I++)
         flag[I] = false;
     showNewCards();
-    showMessage("ChOoSE a CarD <br> pResS aNY KeY...", "");
+    showMessage("ChOoSE a CarD\npResS aNY KeY", "...");
 }
 
 function showResult() {
     showNewCards();
-    showMessage("sEE, I pUt OuT tHE cARd <br> pResS aNY KeY...", "");
+    showMessage("sEE, I pUt OuT tHE cARd\npResS aNY KeY", "...");
     status = RESULT;
 }
 
@@ -47,7 +56,7 @@ function showPreResult() {
         var objImg = $("#card" + I);
         objImg.attr("src", path);
     }
-    showMessage("Wait...", "");
+    showMessage("Wait", "...");
     setTimeout(showResult, 5000);
 }
 
