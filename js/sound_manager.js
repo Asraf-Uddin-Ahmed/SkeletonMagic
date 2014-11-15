@@ -5,13 +5,13 @@ SoundManager = function () {
     /*
     PRIVATE
     */
-    var clickSound = new Audio("sounds/click.mp3");
     var whistleSound = new Audio("sounds/whistle.mp3");
     var deleteSound = new Audio("sounds/delete_sound.wav");
-    var backgroundSound = new Audio("sounds/monsters_are_here.mp3");
+    var backgroundSound = new Audio("sounds/Zombies_on_the_way.mp3");
     var tadaSound = new Audio("sounds/tada.wav");
 
     function playClick() {
+        var clickSound = new Audio("sounds/click.mp3");
         clickSound.play();
     }
 

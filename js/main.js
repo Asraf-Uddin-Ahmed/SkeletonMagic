@@ -28,12 +28,9 @@ function showMessage(instructionMessage) {
     $('#instructionDiv').typeText("write", {
         message: instructionMessage,
         newLine: true,
-        beforeTextType: function () {
-            objProgressSpan.hide();
-        },
-        afterTextType: function () {
-            objProgressSpan.show();
-        }
+        beforeTextType: objProgressSpan.hide,
+        afterTextType: objProgressSpan.show,
+        onLetterType: SoundManager.playClick
     });
 }
 
@@ -64,6 +61,12 @@ function showPreResult() {
 
 $(function () {
 
+    $(window).load(function () {
+        SoundManager.addEventToPlayBackgroundSoundInLoop();
+        SoundManager.playBackgroundSound();
+    });
+
+
     objProgressSpan = $('#progressSpan');
 
     initialization();
@@ -84,7 +87,9 @@ $(function () {
         backspaceSpeed: 500,
         toggleDelayForType: 500,
         toggleDelayForBack: 500,
-        toggleLoop: true
+        toggleLoop: true,
+        onLetterType: SoundManager.playClick,
+        onLetterBackspace: SoundManager.playClick
     });
 
 });
