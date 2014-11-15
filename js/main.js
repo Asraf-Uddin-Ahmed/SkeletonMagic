@@ -1,4 +1,6 @@
 
+var objProgressSpan;
+
 var totalCard = 10;
 var flag = [];
 
@@ -22,17 +24,15 @@ function showNewCards() {
 }
 
 
-function showMessage(instructionMessage, progressMessage) {
+function showMessage(instructionMessage) {
     $('#instructionDiv').typeText("write", {
         message: instructionMessage,
         newLine: true,
+        beforeTextType: function () {
+            objProgressSpan.hide();
+        },
         afterTextType: function () {
-            $('#progressSpan').typeText("toggle", {
-                toggleMessageArray: [progressMessage],
-                typeSpeed: 300,
-                backspaceSpeed: 300,
-                toggleLoop: true
-            });
+            objProgressSpan.show();
         }
     });
 }
@@ -41,12 +41,12 @@ function initialization() {
     for (var I = 0; I < 52; I++)
         flag[I] = false;
     showNewCards();
-    showMessage("ChOoSE a CarD\npResS aNY KeY", "...");
+    showMessage("ChOoSE a CarD\npResS aNY KeY");
 }
 
 function showResult() {
     showNewCards();
-    showMessage("sEE, I pUt OuT tHE cARd\npResS aNY KeY", "...");
+    showMessage("sEE, I pUt OuT tHE cARd\npResS aNY KeY");
     status = RESULT;
 }
 
@@ -56,13 +56,15 @@ function showPreResult() {
         var objImg = $("#card" + I);
         objImg.attr("src", path);
     }
-    showMessage("Wait", "...");
+    showMessage("Wait");
     setTimeout(showResult, 5000);
 }
 
 
 
 $(function () {
+
+    objProgressSpan = $('#progressSpan');
 
     initialization();
 
@@ -74,6 +76,15 @@ $(function () {
             status = INIT;
             initialization();
         }
+    });
+
+    objProgressSpan.typeText("toggle", {
+        toggleMessageArray: ["....."],
+        typeSpeed: 500,
+        backspaceSpeed: 500,
+        toggleDelayForType: 500,
+        toggleDelayForBack: 500,
+        toggleLoop: true
     });
 
 });
