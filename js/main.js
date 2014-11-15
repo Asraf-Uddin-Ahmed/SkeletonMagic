@@ -24,8 +24,8 @@ function showNewCards() {
 
 function showMessage(firstMessage, secondMessage) {
     $("#msg0, #msg1").html("");
-    $('#msg0').typeTo(firstMessage);
-    $('#msg1').typeTo(secondMessage);
+    $('#msg0').html(firstMessage);
+    $('#msg1').html(secondMessage);
 }
 
 function initialization() {
